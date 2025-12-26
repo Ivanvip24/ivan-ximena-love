@@ -564,23 +564,183 @@
         .modal-btn.confirm { background: linear-gradient(135deg, var(--sage), var(--mint)); border: none; color: white; }
         .modal-btn:hover { transform: translateY(-2px); }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 31, 13, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover { color: var(--gold); }
+
+        .close-mobile-nav {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Data Sync Buttons */
+        .sync-buttons {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
+
+        .sync-btn {
+            background: rgba(74, 124, 89, 0.3);
+            border: 1px solid rgba(74, 124, 89, 0.5);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .sync-btn:hover {
+            background: var(--sage);
+            transform: translateY(-2px);
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
-            .player-container { grid-template-columns: 1fr; gap: 3rem; }
-            .vinyl-container { width: 280px; height: 280px; }
+            .player-container { grid-template-columns: 1fr; gap: 2rem; }
+            .vinyl-container { width: 260px; height: 260px; margin: 0 auto; }
+            .vinyl-stage { align-items: center; }
             .tonearm { display: none; }
-            .add-song-form { width: 100%; }
+            .add-song-form { width: 100%; flex-direction: column; }
             .youtube-input { width: 100%; }
+            .add-song-btn { width: 100%; justify-content: center; }
+            .player-info { text-align: center; }
+            .controls { justify-content: center; }
+            .volume-control { justify-content: center; }
         }
 
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
-            .hero-names { font-size: clamp(3rem, 15vw, 6rem); }
-            .counter-grid { gap: 1.5rem; }
-            .counter-item { min-width: 100px; padding: 1.5rem; }
-            .counter-number { font-size: 2.5rem; }
-            .vision-board { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .mobile-menu-btn { display: block; }
+            .mobile-nav { display: flex; }
+
+            .hero { padding: 1.5rem; }
+            .hero-names { font-size: clamp(2.5rem, 12vw, 5rem); }
+            .hero-prelude { font-size: 0.75rem; letter-spacing: 0.2em; }
+            .hero-date { font-size: 1rem; }
+
+            .counter-section { padding: 4rem 1rem; }
+            .counter-grid { gap: 1rem; }
+            .counter-item { min-width: 70px; padding: 1rem; }
+            .counter-number { font-size: 2rem; }
+            .counter-label { font-size: 0.65rem; }
+            .counter-message { font-size: 1.1rem; }
+
+            .music-section { padding: 4rem 1rem; }
+            .music-header { margin-bottom: 2rem; }
+            .section-title { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1rem; }
+            .music-quote { font-size: 1rem; }
+
+            .vinyl-container { width: 220px; height: 220px; }
+            .visualizer { height: 50px; gap: 2px; padding: 0.5rem 1rem; }
+            .viz-bar { width: 3px; }
+
+            .song-title { font-size: 1.3rem; }
+            .control-btn { width: 45px; height: 45px; font-size: 1rem; }
+            .control-btn.play-btn { width: 55px; height: 55px; font-size: 1.2rem; }
+
+            .playlist-section { margin-top: 2rem; }
+            .playlist-header { flex-direction: column; align-items: stretch; }
+            .playlist-item { padding: 0.75rem 1rem; }
+            .playlist-item-thumb { width: 40px; height: 40px; margin-right: 0.75rem; }
+            .playlist-item-title { font-size: 0.9rem; }
+            .playlist-item-delete { opacity: 1; }
+
+            .vision-section { padding: 4rem 1rem; }
+            .vision-toolbar { gap: 0.5rem; }
+            .vision-add-btn { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
+            .vision-category-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
+            .vision-board {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .vision-card { grid-row-end: auto !important; }
+            .vision-card-icon { height: 150px; font-size: 3rem; }
+            .vision-card-delete { opacity: 1; }
+
+            .notes-section { padding: 4rem 1rem; }
+            .note-form { padding: 1.5rem; }
+            .note-input { padding: 1rem; font-size: 1rem; min-height: 100px; }
+            .note-form-footer { flex-direction: column; gap: 1rem; }
+            .send-note-btn { width: 100%; justify-content: center; }
+            .notes-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .note-card { padding: 1.25rem; }
+            .note-content { font-size: 1rem; }
+            .delete-note { opacity: 1; }
+
+            .modal { padding: 1.5rem; margin: 1rem; max-height: 85vh; }
+            .modal-title { font-size: 1.5rem; }
+            .modal-row { flex-direction: column; gap: 0; }
+            .modal-file-label { padding: 1.5rem; }
+            .modal-buttons { flex-direction: column; }
+
+            footer { padding: 3rem 1rem; }
+            .number-24 { bottom: 1rem; right: 1rem; font-size: 0.85rem; }
+            .sync-buttons { bottom: 1rem; left: 1rem; flex-direction: column; }
+            .sync-btn { font-size: 0.7rem; padding: 0.4rem 0.75rem; }
+
+            .scroll-indicator { bottom: 2rem; }
+            .scroll-line { height: 40px; }
+        }
+
+        @media (max-width: 400px) {
+            .hero-names { font-size: clamp(2rem, 15vw, 4rem); }
+            .counter-item { min-width: 65px; }
+            .counter-number { font-size: 1.75rem; }
+            .vinyl-container { width: 180px; height: 180px; }
         }
     </style>
 </head>
@@ -600,7 +760,17 @@
             <li><a href="#vision">Vision Board</a></li>
             <li><a href="#notes">Love Notes</a></li>
         </ul>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="close-mobile-nav" id="close-mobile-nav">×</button>
+        <a href="#home" class="mobile-nav-link">Home</a>
+        <a href="#music" class="mobile-nav-link">Music</a>
+        <a href="#vision" class="mobile-nav-link">Vision Board</a>
+        <a href="#notes" class="mobile-nav-link">Love Notes</a>
+    </div>
 
     <!-- Hero -->
     <section class="hero" id="home">
@@ -754,6 +924,13 @@
     </footer>
 
     <div class="number-24">✦ 24 ✦</div>
+
+    <!-- Data Sync Buttons -->
+    <div class="sync-buttons">
+        <button class="sync-btn" id="export-btn" title="Export your data to share">📤 Export</button>
+        <button class="sync-btn" id="import-btn" title="Import data from partner">📥 Import</button>
+    </div>
+    <input type="file" id="import-file" accept=".json" style="display: none;">
 
     <!-- Vision Modal -->
     <div class="modal-overlay" id="vision-modal">
@@ -1384,6 +1561,103 @@
                 orb.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px)`;
             });
         });
+
+        // ========== MOBILE MENU ==========
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-nav').classList.add('active');
+        });
+
+        document.getElementById('close-mobile-nav').addEventListener('click', () => {
+            document.getElementById('mobile-nav').classList.remove('active');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-nav').classList.remove('active');
+            });
+        });
+
+        // ========== EXPORT / IMPORT DATA ==========
+        document.getElementById('export-btn').addEventListener('click', exportData);
+        document.getElementById('import-btn').addEventListener('click', () => {
+            document.getElementById('import-file').click();
+        });
+        document.getElementById('import-file').addEventListener('change', importData);
+
+        function exportData() {
+            const data = {
+                playlist: JSON.parse(localStorage.getItem('youtubePlaylist') || '[]'),
+                visions: JSON.parse(localStorage.getItem('visionBoard') || '[]'),
+                notes: JSON.parse(localStorage.getItem('loveNotes') || '[]'),
+                exportedAt: new Date().toISOString(),
+                exportedBy: 'I&X Love App'
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `love-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert('💚 Data exported! Send this file to your partner so they can import it.');
+        }
+
+        function importData(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const data = JSON.parse(event.target.result);
+
+                    if (confirm('This will merge the imported data with your existing data. Continue?')) {
+                        // Merge playlists (avoid duplicates by videoId)
+                        if (data.playlist) {
+                            const existingPlaylist = JSON.parse(localStorage.getItem('youtubePlaylist') || '[]');
+                            const existingIds = new Set(existingPlaylist.map(s => s.videoId));
+                            const newSongs = data.playlist.filter(s => !existingIds.has(s.videoId));
+                            const mergedPlaylist = [...existingPlaylist, ...newSongs];
+                            localStorage.setItem('youtubePlaylist', JSON.stringify(mergedPlaylist));
+                            playlist = mergedPlaylist;
+                            renderPlaylist();
+                        }
+
+                        // Merge visions (avoid duplicates by id)
+                        if (data.visions) {
+                            const existingVisions = JSON.parse(localStorage.getItem('visionBoard') || '[]');
+                            const existingIds = new Set(existingVisions.map(v => v.id));
+                            const newVisions = data.visions.filter(v => !existingIds.has(v.id));
+                            const mergedVisions = [...newVisions, ...existingVisions];
+                            localStorage.setItem('visionBoard', JSON.stringify(mergedVisions));
+                            visions = mergedVisions;
+                            renderVisionBoard();
+                        }
+
+                        // Merge notes (avoid duplicates by content + author)
+                        if (data.notes) {
+                            const existingNotes = JSON.parse(localStorage.getItem('loveNotes') || '[]');
+                            const existingKeys = new Set(existingNotes.map(n => n.content + n.author));
+                            const newNotes = data.notes.filter(n => !existingKeys.has(n.content + n.author));
+                            const mergedNotes = [...newNotes, ...existingNotes];
+                            localStorage.setItem('loveNotes', JSON.stringify(mergedNotes));
+                            notes = mergedNotes;
+                            renderNotes();
+                        }
+
+                        alert('💚 Data imported successfully! Your data has been merged.');
+                    }
+                } catch (error) {
+                    alert('Error: Could not read the file. Make sure it\'s a valid export file.');
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = ''; // Reset input
+        }
     </script>
 </body>
 </html>
