@@ -340,13 +340,12 @@
             color: var(--gold);
         }
 
-        /* Vision Board Masonry */
+        /* Vision Board */
         .vision-board {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            grid-auto-rows: 10px;
             gap: 1.5rem;
         }
 
@@ -358,6 +357,9 @@
             position: relative;
             transition: all 0.4s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
         }
 
         .vision-card:hover {
@@ -366,19 +368,23 @@
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
         }
 
-        .vision-card.size-small { grid-row-end: span 25; }
-        .vision-card.size-medium { grid-row-end: span 35; }
-        .vision-card.size-large { grid-row-end: span 45; }
+        .vision-card.size-small { min-height: 280px; }
+        .vision-card.size-medium { min-height: 350px; }
+        .vision-card.size-large { min-height: 420px; }
 
         .vision-card-image {
             width: 100%;
-            height: 70%;
+            height: 180px;
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .vision-card-content {
             padding: 1.25rem;
             position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .vision-card-category {
@@ -436,12 +442,14 @@
 
         /* Default vision cards without images */
         .vision-card-icon {
-            height: 60%;
+            height: 150px;
+            min-height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
             background: linear-gradient(135deg, rgba(74, 124, 89, 0.3), rgba(212, 165, 116, 0.2));
+            flex-shrink: 0;
         }
 
         /* Polaroid style cards */
@@ -674,32 +682,28 @@
             .playlist-item-delete { opacity: 1; }
 
             .vision-section { padding: 4rem 1rem; }
-            .vision-toolbar { gap: 0.5rem; }
+            .vision-toolbar { gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
             .vision-add-btn { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
             .vision-category-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
             .vision-board {
-                display: flex;
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
             .vision-card {
-                grid-row-end: auto !important;
-                min-height: auto !important;
-                height: auto !important;
+                min-height: 280px;
             }
             .vision-card.size-small,
             .vision-card.size-medium,
             .vision-card.size-large {
-                grid-row-end: auto !important;
+                min-height: 280px;
             }
             .vision-card-icon {
                 height: 120px;
-                font-size: 3rem;
                 min-height: 120px;
+                font-size: 3rem;
             }
             .vision-card-image {
-                height: 200px;
-                min-height: 200px;
+                height: 180px;
             }
             .vision-card-content {
                 padding: 1rem;
@@ -707,9 +711,11 @@
             .vision-card-delete { opacity: 1; }
             .vision-card.polaroid {
                 padding: 0.75rem 0.75rem 2rem 0.75rem;
+                min-height: auto;
             }
             .vision-card.postit {
                 transform: rotate(0deg);
+                min-height: auto;
             }
 
             .notes-section { padding: 4rem 1rem; }
