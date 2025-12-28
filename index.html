@@ -87,8 +87,9 @@
             font-family: 'Caveat', cursive;
             color: var(--gold);
             white-space: nowrap;
-            animation: floatWord 25s ease-in-out infinite;
+            opacity: 0;
             text-shadow: 0 0 20px currentColor;
+            animation: floatWordUp 18s ease-in-out infinite;
         }
 
         .floating-word.style-1 { color: var(--gold); }
@@ -96,40 +97,23 @@
         .floating-word.style-3 { color: var(--rose); }
         .floating-word.style-4 { color: var(--sage); }
 
-        /* Words that start visible immediately */
-        .floating-word.instant {
-            opacity: 0.7;
-            animation: floatWordSlow 30s ease-in-out infinite;
-        }
-
-        @keyframes floatWord {
+        @keyframes floatWordUp {
             0% {
                 opacity: 0;
-                transform: translateY(50px) rotate(-3deg);
+                transform: translateY(100vh) rotate(-5deg);
             }
-            10% {
-                opacity: 0.6;
+            8% {
+                opacity: 0.7;
             }
             50% {
-                opacity: 0.8;
+                opacity: 0.85;
             }
-            90% {
-                opacity: 0.6;
+            92% {
+                opacity: 0.7;
             }
             100% {
                 opacity: 0;
-                transform: translateY(-50px) rotate(3deg);
-            }
-        }
-
-        @keyframes floatWordSlow {
-            0%, 100% {
-                opacity: 0.6;
-                transform: translateY(0) rotate(-2deg);
-            }
-            50% {
-                opacity: 0.9;
-                transform: translateY(-30px) rotate(2deg);
+                transform: translateY(-100px) rotate(5deg);
             }
         }
 
@@ -1026,40 +1010,18 @@
                 'Sisisi perfecto'
             ];
 
-            // Create instant visible words - these appear immediately
-            const instantPositions = [
-                { phrase: 'Sipis', left: '10%', top: '20%', size: '2.2rem', style: 1 },
-                { phrase: ':)', left: '75%', top: '15%', size: '2.5rem', style: 2 },
-                { phrase: 'Que se les multiplique 7 veces 7', left: '15%', top: '60%', size: '1.8rem', style: 3 },
-                { phrase: 'Sisisi perfecto', left: '60%', top: '45%', size: '2rem', style: 4 },
-                { phrase: 'Sipis', left: '80%', top: '70%', size: '2rem', style: 1 },
-                { phrase: ':)', left: '5%', top: '85%', size: '2.3rem', style: 2 },
-                { phrase: 'Sisisi perfecto', left: '45%', top: '25%', size: '1.9rem', style: 3 },
-                { phrase: 'Sipis', left: '35%', top: '75%', size: '2.1rem', style: 4 },
-            ];
-
-            // Add instant words that are visible right away
-            instantPositions.forEach((pos, i) => {
-                const word = document.createElement('div');
-                word.className = `floating-word instant style-${pos.style}`;
-                word.textContent = pos.phrase;
-                word.style.left = pos.left;
-                word.style.top = pos.top;
-                word.style.fontSize = pos.size;
-                word.style.animationDelay = (i * 0.5) + 's';
-                container.appendChild(word);
-            });
-
-            // Add additional floating words that animate in
-            for (let i = 0; i < 12; i++) {
+            // Create 20 floating words with staggered short delays
+            for (let i = 0; i < 20; i++) {
                 const word = document.createElement('div');
                 word.className = 'floating-word style-' + ((i % 4) + 1);
                 word.textContent = phrases[i % phrases.length];
-                word.style.left = Math.random() * 85 + 5 + '%';
-                word.style.top = Math.random() * 80 + 10 + '%';
-                word.style.fontSize = (1.4 + Math.random() * 1.2) + 'rem';
-                word.style.animationDelay = (3 + i * 2) + 's';
-                word.style.animationDuration = (20 + Math.random() * 10) + 's';
+                word.style.left = Math.random() * 90 + '%';
+                word.style.fontSize = (1.6 + Math.random() * 1.2) + 'rem';
+
+                // Short delays so they appear quickly - first ones appear immediately
+                word.style.animationDelay = (i * 0.8) + 's';
+                word.style.animationDuration = (16 + Math.random() * 8) + 's';
+
                 container.appendChild(word);
             }
         }
