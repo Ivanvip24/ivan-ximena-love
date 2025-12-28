@@ -102,13 +102,13 @@
                 transform: translateY(100vh) rotate(-5deg);
             }
             5% {
-                opacity: 0.15;
+                opacity: 0.5;
             }
             50% {
-                opacity: 0.25;
+                opacity: 0.7;
             }
             95% {
-                opacity: 0.15;
+                opacity: 0.5;
             }
             100% {
                 opacity: 0;
@@ -558,35 +558,6 @@
             color: #6b5a10;
         }
 
-        /* ========== LOVE NOTES ========== */
-        .notes-section { padding: 8rem 2rem; }
-        .notes-header { text-align: center; margin-bottom: 4rem; }
-        .notes-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--rose); margin-top: 1rem; }
-
-        .note-form { max-width: 600px; margin: 0 auto 4rem; background: rgba(26, 58, 26, 0.4); border: 1px solid rgba(232, 164, 184, 0.2); border-radius: 24px; padding: 2rem; }
-        .note-input { width: 100%; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem; color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; resize: none; min-height: 120px; outline: none; transition: border-color 0.3s ease; }
-        .note-input:focus { border-color: var(--rose); }
-        .note-input::placeholder { color: var(--text-muted); font-style: italic; }
-        .note-form-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 1rem; }
-        .note-author { display: flex; align-items: center; gap: 0.75rem; }
-        .note-author label { color: var(--text-muted); font-size: 0.9rem; }
-        .author-select { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 0.5rem 1rem; color: var(--cream); font-size: 0.9rem; cursor: pointer; outline: none; }
-        .send-note-btn { background: linear-gradient(135deg, var(--rose-dark), var(--rose)); border: none; color: white; padding: 1rem 2rem; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 500; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; }
-        .send-note-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232, 164, 184, 0.3); }
-
-        .notes-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .note-card { background: linear-gradient(135deg, rgba(26, 58, 26, 0.6), rgba(13, 31, 13, 0.8)); border: 1px solid rgba(232, 164, 184, 0.15); border-radius: 20px; padding: 1.5rem; position: relative; transition: all 0.3s ease; animation: noteAppear 0.5s ease forwards; }
-        @keyframes noteAppear { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .note-card:hover { transform: translateY(-5px); border-color: var(--rose); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); }
-        .note-card::before { content: '"'; position: absolute; top: 1rem; left: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--rose); opacity: 0.3; line-height: 1; }
-        .note-content { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--cream); line-height: 1.7; margin-top: 1.5rem; }
-        .note-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-        .note-author-name { color: var(--gold); font-size: 0.9rem; }
-        .note-date { color: var(--text-muted); font-size: 0.8rem; }
-        .delete-note { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); cursor: pointer; opacity: 0; transition: opacity 0.3s ease, color 0.3s ease; }
-        .note-card:hover .delete-note { opacity: 1; }
-        .delete-note:hover { color: var(--rose); }
-
         /* Footer */
         footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(74, 124, 89, 0.2); }
         .footer-hearts { font-size: 2rem; margin-bottom: 1rem; animation: heartbeat 1.5s ease-in-out infinite; }
@@ -764,16 +735,6 @@
                 min-height: auto;
             }
 
-            .notes-section { padding: 4rem 1rem; }
-            .note-form { padding: 1.5rem; }
-            .note-input { padding: 1rem; font-size: 1rem; min-height: 100px; }
-            .note-form-footer { flex-direction: column; gap: 1rem; }
-            .send-note-btn { width: 100%; justify-content: center; }
-            .notes-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .note-card { padding: 1.25rem; }
-            .note-content { font-size: 1rem; }
-            .delete-note { opacity: 1; }
-
             .modal { padding: 1.5rem; margin: 1rem; max-height: 85vh; }
             .modal-title { font-size: 1.5rem; }
             .modal-row { flex-direction: column; gap: 0; }
@@ -810,7 +771,6 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#music">Music</a></li>
             <li><a href="#vision">Vision Board</a></li>
-            <li><a href="#notes">Love Notes</a></li>
         </ul>
         <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
     </nav>
@@ -821,7 +781,6 @@
         <a href="#home" class="mobile-nav-link">Home</a>
         <a href="#music" class="mobile-nav-link">Music</a>
         <a href="#vision" class="mobile-nav-link">Vision Board</a>
-        <a href="#notes" class="mobile-nav-link">Love Notes</a>
     </div>
 
     <!-- Hero -->
@@ -946,30 +905,6 @@
         <div class="vision-board" id="vision-board"></div>
     </section>
 
-    <!-- Love Notes -->
-    <section class="notes-section" id="notes">
-        <div class="notes-header">
-            <p class="section-label">Messages From The Heart</p>
-            <h2 class="section-title">Love Notes</h2>
-            <p class="notes-subtitle">Leave sweet messages for each other ✨</p>
-        </div>
-
-        <div class="note-form">
-            <textarea class="note-input" id="note-input" placeholder="Write something beautiful..."></textarea>
-            <div class="note-form-footer">
-                <div class="note-author">
-                    <label>From:</label>
-                    <select class="author-select" id="note-author">
-                        <option value="Iván">Iván 💚</option>
-                        <option value="Ximena">Ximena 💗</option>
-                    </select>
-                </div>
-                <button class="send-note-btn" id="send-note-btn">Send Note 💌</button>
-            </div>
-        </div>
-        <div class="notes-grid" id="notes-grid"></div>
-    </section>
-
     <footer>
         <div class="footer-hearts">💚</div>
         <p class="footer-text">Made with infinite love for <span>Ximena</span></p>
@@ -1053,7 +988,6 @@
             createMusicNotes();
             createVisualizer();
             initializeCounter();
-            initializeNotes();
             initializeVisionBoard();
         });
 
@@ -1573,62 +1507,6 @@
             document.getElementById('vision-file').value = '';
             document.getElementById('vision-preview').style.display = 'none';
             document.getElementById('vision-file-label').innerHTML = '📷 Click to upload an image';
-        }
-
-        // ========== LOVE NOTES ==========
-        let notes = [];
-
-        function initializeNotes() {
-            const saved = localStorage.getItem('loveNotes');
-            notes = saved ? JSON.parse(saved) : [
-                { content: "You make every day brighter just by being you. I'm so grateful the universe brought us together. 💚", author: "Iván", date: "2025-10-15" },
-                { content: "Te amo más de lo que las palabras pueden expresar. Eres mi persona favorita en todo el universo. ✨", author: "Ximena", date: "2025-10-20" }
-            ];
-            renderNotes();
-
-            document.getElementById('send-note-btn').addEventListener('click', addNote);
-            document.getElementById('note-input').addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && e.ctrlKey) addNote();
-            });
-        }
-
-        function addNote() {
-            const content = document.getElementById('note-input').value.trim();
-            const author = document.getElementById('note-author').value;
-            if (content) {
-                notes.unshift({ content, author, date: new Date().toISOString().split('T')[0] });
-                localStorage.setItem('loveNotes', JSON.stringify(notes));
-                document.getElementById('note-input').value = '';
-                renderNotes();
-            }
-        }
-
-        function renderNotes() {
-            const container = document.getElementById('notes-grid');
-            container.innerHTML = '';
-            notes.forEach((note, index) => {
-                const card = document.createElement('div');
-                card.className = 'note-card';
-                card.innerHTML = `
-                    <button class="delete-note" onclick="deleteNote(${index})">×</button>
-                    <p class="note-content">${note.content}</p>
-                    <div class="note-footer">
-                        <span class="note-author-name">— ${note.author}</span>
-                        <span class="note-date">${formatDate(note.date)}</span>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function deleteNote(index) {
-            notes.splice(index, 1);
-            localStorage.setItem('loveNotes', JSON.stringify(notes));
-            renderNotes();
-        }
-
-        function formatDate(dateStr) {
-            return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         }
 
         // ========== PARALLAX ==========
