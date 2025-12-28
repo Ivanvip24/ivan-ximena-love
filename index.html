@@ -70,6 +70,52 @@
         .star { position: absolute; width: 3px; height: 3px; background: var(--gold-light); border-radius: 50%; animation: twinkle 3s ease-in-out infinite; }
         @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
 
+        /* Floating Words */
+        .floating-words {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-word {
+            position: absolute;
+            font-family: 'Caveat', cursive;
+            color: var(--gold);
+            opacity: 0;
+            white-space: nowrap;
+            animation: floatWord 20s ease-in-out infinite;
+        }
+
+        .floating-word.style-1 { color: var(--gold); }
+        .floating-word.style-2 { color: var(--mint); }
+        .floating-word.style-3 { color: var(--rose); }
+        .floating-word.style-4 { color: var(--sage); }
+
+        @keyframes floatWord {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(-5deg);
+            }
+            5% {
+                opacity: 0.15;
+            }
+            50% {
+                opacity: 0.25;
+            }
+            95% {
+                opacity: 0.15;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(5deg);
+            }
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -756,6 +802,7 @@
         <div class="gradient-orb orb-3"></div>
     </div>
     <div class="stars" id="stars"></div>
+    <div class="floating-words" id="floating-words"></div>
 
     <nav>
         <div class="nav-logo">I & X</div>
@@ -1002,6 +1049,7 @@
         // ========== INITIALIZATION ==========
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
+            createFloatingWords();
             createMusicNotes();
             createVisualizer();
             initializeCounter();
@@ -1019,6 +1067,38 @@
                 star.style.top = Math.random() * 100 + '%';
                 star.style.animationDelay = Math.random() * 3 + 's';
                 container.appendChild(star);
+            }
+        }
+
+        // ========== FLOATING WORDS ==========
+        function createFloatingWords() {
+            const container = document.getElementById('floating-words');
+            const phrases = [
+                'Sipis',
+                ':)',
+                'Que se les multiplique 7 veces 7',
+                'Sisisi perfecto',
+                'Sipis',
+                ':)',
+                'Sisisi perfecto',
+                'Sipis'
+            ];
+
+            // Create multiple instances of each phrase
+            for (let i = 0; i < 20; i++) {
+                const word = document.createElement('div');
+                word.className = 'floating-word style-' + ((i % 4) + 1);
+                word.textContent = phrases[i % phrases.length];
+
+                // Random positioning
+                word.style.left = Math.random() * 90 + '%';
+                word.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
+
+                // Stagger the animations so they don't all appear at once
+                word.style.animationDelay = (i * 2.5) + 's';
+                word.style.animationDuration = (18 + Math.random() * 10) + 's';
+
+                container.appendChild(word);
             }
         }
 
