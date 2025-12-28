@@ -88,8 +88,8 @@
             color: var(--gold);
             white-space: nowrap;
             opacity: 0;
-            text-shadow: 0 0 20px currentColor;
-            animation: floatWordUp 18s ease-in-out infinite;
+            text-shadow: 0 0 25px currentColor;
+            pointer-events: none;
         }
 
         .floating-word.style-1 { color: var(--gold); }
@@ -97,24 +97,10 @@
         .floating-word.style-3 { color: var(--rose); }
         .floating-word.style-4 { color: var(--sage); }
 
-        @keyframes floatWordUp {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) rotate(-5deg);
-            }
-            8% {
-                opacity: 0.7;
-            }
-            50% {
-                opacity: 0.85;
-            }
-            92% {
-                opacity: 0.7;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) rotate(5deg);
-            }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            15%, 85% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
         }
 
         /* Navigation */
@@ -1010,19 +996,38 @@
                 'Sisisi perfecto'
             ];
 
-            // Create 20 floating words with staggered short delays
-            for (let i = 0; i < 20; i++) {
+            // Function to animate a single word
+            function animateWord(word, immediate = false) {
+                // Random position
+                word.style.left = (5 + Math.random() * 85) + '%';
+                word.style.top = (5 + Math.random() * 85) + '%';
+                word.style.fontSize = (1.5 + Math.random() * 1.3) + 'rem';
+
+                // Animation duration between 3-6 seconds
+                const duration = 3000 + Math.random() * 3000;
+                word.style.animation = `fadeInOut ${duration}ms ease-in-out`;
+
+                // When animation ends, reposition and restart
+                word.onanimationend = () => {
+                    word.style.animation = 'none';
+                    // Small delay before next appearance
+                    setTimeout(() => {
+                        animateWord(word);
+                    }, Math.random() * 2000);
+                };
+            }
+
+            // Create words and start them at staggered times
+            for (let i = 0; i < 15; i++) {
                 const word = document.createElement('div');
                 word.className = 'floating-word style-' + ((i % 4) + 1);
                 word.textContent = phrases[i % phrases.length];
-                word.style.left = Math.random() * 90 + '%';
-                word.style.fontSize = (1.6 + Math.random() * 1.2) + 'rem';
-
-                // Short delays so they appear quickly - first ones appear immediately
-                word.style.animationDelay = (i * 0.8) + 's';
-                word.style.animationDuration = (16 + Math.random() * 8) + 's';
-
                 container.appendChild(word);
+
+                // Stagger the start - first few appear immediately
+                setTimeout(() => {
+                    animateWord(word);
+                }, i * 200); // 200ms between each start
             }
         }
 
