@@ -98,10 +98,22 @@
 
         @keyframes fadeInOut {
             0% { opacity: 0; }
-            20% { opacity: 0.25; }
-            50% { opacity: 0.3; }
-            80% { opacity: 0.25; }
+            20% { opacity: 0.12; }
+            50% { opacity: 0.15; }
+            80% { opacity: 0.12; }
             100% { opacity: 0; }
+        }
+
+        /* Content Card - glassmorphism background for readability */
+        .content-card {
+            background: rgba(13, 31, 13, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid rgba(127, 178, 133, 0.15);
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
@@ -123,17 +135,17 @@
         .nav-links a:hover { color: var(--gold); }
         .nav-links a:hover::after { width: 100%; }
 
-        .section-label { font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage); margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); }
-        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin-bottom: 2rem; color: var(--cream); text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6); }
+        .section-label { font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mint); margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,1), 0 0 25px rgba(0,0,0,0.8), 0 0 50px rgba(0,0,0,0.5); font-weight: 500; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; margin-bottom: 2rem; color: #ffffff; text-shadow: 0 3px 15px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6); }
 
         /* Hero */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; }
-        .hero-content { opacity: 0; animation: fadeInUp 1.5s ease forwards; animation-delay: 0.5s; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; z-index: 1; }
+        .hero-content { opacity: 0; animation: fadeInUp 1.5s ease forwards; animation-delay: 0.5s; background: rgba(13, 31, 13, 0.7); padding: 3rem 4rem; border-radius: 30px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(127, 178, 133, 0.1); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        .hero-prelude { font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 0.3s; text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.6); }
-        .hero-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 12vw, 10rem); font-weight: 300; line-height: 1; margin-bottom: 1rem; text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.7); }
-        .hero-names .ampersand { display: block; font-size: 0.4em; color: var(--gold); margin: 0.5rem 0; font-style: italic; }
-        .hero-date { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text-muted); margin-top: 2rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5); }
+        .hero-prelude { font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 2rem; opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 0.3s; text-shadow: 0 2px 15px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.8); font-weight: 500; }
+        .hero-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 12vw, 10rem); font-weight: 400; line-height: 1; margin-bottom: 1rem; color: #ffffff; text-shadow: 0 4px 20px rgba(0,0,0,1), 0 0 50px rgba(0,0,0,0.9), 0 0 80px rgba(0,0,0,0.6); }
+        .hero-names .ampersand { display: block; font-size: 0.4em; color: var(--gold); margin: 0.5rem 0; font-style: italic; text-shadow: 0 2px 15px rgba(0,0,0,1); }
+        .hero-date { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,0.85); margin-top: 2rem; text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 25px rgba(0,0,0,0.7); }
         .hero-date span { color: var(--gold); }
         .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeInUp 1s ease forwards, bounce 2s ease-in-out infinite; animation-delay: 2s, 2.5s; }
         .scroll-indicator span { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
@@ -141,18 +153,18 @@
         @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
 
         /* Counter */
-        .counter-section { padding: 8rem 2rem; text-align: center; }
+        .counter-section { padding: 8rem 2rem; text-align: center; position: relative; z-index: 1; }
         .counter-grid { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; max-width: 900px; margin: 0 auto 4rem; }
-        .counter-item { text-align: center; padding: 2rem; background: rgba(74, 124, 89, 0.1); border: 1px solid rgba(74, 124, 89, 0.2); border-radius: 20px; min-width: 140px; backdrop-filter: blur(10px); transition: transform 0.3s ease, border-color 0.3s ease; }
+        .counter-item { text-align: center; padding: 2rem; background: rgba(13, 31, 13, 0.9); border: 1px solid rgba(127, 178, 133, 0.25); border-radius: 20px; min-width: 140px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: transform 0.3s ease, border-color 0.3s ease; }
         .counter-item:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .counter-number { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5); }
-        .counter-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
-        .counter-message { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--mint); max-width: 600px; margin: 0 auto; text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5); }
+        .counter-number { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 400; color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem; text-shadow: 0 2px 15px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.7); }
+        .counter-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,1); font-weight: 500; }
+        .counter-message { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: #ffffff; max-width: 600px; margin: 0 auto; text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 25px rgba(0,0,0,0.7); background: rgba(13, 31, 13, 0.8); padding: 1.5rem 2rem; border-radius: 20px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
 
         /* ========== MUSIC SECTION - YOUTUBE ========== */
-        .music-section { padding: 8rem 2rem; min-height: 80vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
-        .music-header { text-align: center; margin-bottom: 4rem; }
-        .music-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--mint); max-width: 700px; margin: 0 auto; text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5); }
+        .music-section { padding: 8rem 2rem; min-height: 80vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+        .music-header { text-align: center; margin-bottom: 4rem; background: rgba(13, 31, 13, 0.85); padding: 2rem 3rem; border-radius: 25px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(127, 178, 133, 0.15); }
+        .music-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: #ffffff; max-width: 700px; margin: 0 auto; text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.7); }
 
         /* Vinyl Player */
         .vinyl-player {
@@ -294,21 +306,28 @@
             text-align: center;
             opacity: 1;
             transition: all 0.4s ease;
+            background: rgba(13, 31, 13, 0.9);
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(127, 178, 133, 0.2);
         }
 
         .current-song-label {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #ffffff;
             margin-bottom: 0.5rem;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
+            font-weight: 500;
         }
 
         .current-song-name {
             font-family: 'Caveat', cursive;
             font-size: 1.5rem;
-            color: var(--gold);
+            color: var(--gold-light);
             max-width: 400px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.7);
         }
 
 
@@ -644,11 +663,11 @@
         }
 
         /* Footer */
-        footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(74, 124, 89, 0.2); }
+        footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(74, 124, 89, 0.2); position: relative; z-index: 1; background: rgba(13, 31, 13, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .footer-hearts { font-size: 2rem; margin-bottom: 1rem; animation: heartbeat 1.5s ease-in-out infinite; }
         @keyframes heartbeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.2); } 28% { transform: scale(1); } 42% { transform: scale(1.2); } 70% { transform: scale(1); } }
-        .footer-text { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-muted); text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5); }
-        .footer-text span { color: var(--gold); }
+        .footer-text { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: #ffffff; text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.7); }
+        .footer-text span { color: var(--gold-light); }
         .number-24 { position: fixed; bottom: 2rem; right: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); opacity: 0.5; letter-spacing: 0.1em; }
 
         /* Vision Modal */
@@ -659,18 +678,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .joyitas-header {
             text-align: center;
             margin-bottom: 4rem;
+            background: rgba(13, 31, 13, 0.85);
+            padding: 2rem 3rem;
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(127, 178, 133, 0.15);
         }
 
         .joyitas-subtitle {
             font-family: 'Caveat', cursive;
             font-size: 1.4rem;
-            color: var(--gold);
+            color: var(--gold-light);
             margin-top: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
         }
 
         .joyitas-container {
