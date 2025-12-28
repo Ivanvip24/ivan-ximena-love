@@ -552,6 +552,118 @@
         .number-24 { position: fixed; bottom: 2rem; right: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); opacity: 0.5; letter-spacing: 0.1em; }
 
         /* Vision Modal */
+        /* ========== JOYITAS SECTION ========== */
+        .joyitas-section {
+            padding: 8rem 2rem;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .joyitas-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .joyitas-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-top: 0.5rem;
+        }
+
+        .joyitas-container {
+            position: relative;
+            width: 320px;
+            height: 280px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .joyita-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+            transform-origin: center center;
+        }
+
+        .joyita-card.color-0 { background: linear-gradient(135deg, #fef3a0, #f5e67a); }
+        .joyita-card.color-1 { background: linear-gradient(135deg, #ffb3ba, #ff9aa2); }
+        .joyita-card.color-2 { background: linear-gradient(135deg, #baffc9, #98fb98); }
+        .joyita-card.color-3 { background: linear-gradient(135deg, #bae1ff, #87ceeb); }
+        .joyita-card.color-4 { background: linear-gradient(135deg, #e2c4f5, #dda0dd); }
+
+        .joyita-card .joyita-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            color: #333;
+        }
+
+        .joyita-card .joyita-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .joyita-card .joyita-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .joyita-card.flying {
+            animation: flyAway 0.6s ease-in forwards;
+        }
+
+        @keyframes flyAway {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(400px) translateY(-200px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .joyitas-hint {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .joyitas-hint span {
+            animation: tapHint 1.5s ease-in-out infinite;
+        }
+
+        @keyframes tapHint {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .joyitas-counter {
+            margin-top: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 2rem; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal { background: linear-gradient(135deg, var(--forest), var(--deep-forest)); border: 1px solid rgba(127, 178, 133, 0.3); border-radius: 24px; padding: 2.5rem; max-width: 500px; width: 100%; transform: scale(0.9); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
@@ -968,6 +1080,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#music">Music</a></li>
             <li><a href="#vision">Vision Board</a></li>
+            <li><a href="#joyitas">Joyitas</a></li>
         </ul>
         <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
     </nav>
@@ -978,6 +1091,7 @@
         <a href="#home" class="mobile-nav-link">Home</a>
         <a href="#music" class="mobile-nav-link">Music</a>
         <a href="#vision" class="mobile-nav-link">Vision Board</a>
+        <a href="#joyitas" class="mobile-nav-link">Joyitas</a>
     </div>
 
     <!-- Hero -->
@@ -1101,6 +1215,22 @@
         <div class="vision-board" id="vision-board"></div>
     </section>
 
+    <!-- Joyitas Section -->
+    <section class="joyitas-section" id="joyitas">
+        <div class="joyitas-header">
+            <p class="section-label">Lessons of Love</p>
+            <h2 class="section-title">Joyitas</h2>
+            <p class="joyitas-subtitle">Little treasures I've learned with you ✨</p>
+        </div>
+
+        <div class="joyitas-container" id="joyitas-container">
+            <!-- Cards will be generated by JavaScript -->
+        </div>
+
+        <p class="joyitas-hint"><span>👆</span> Tap to reveal the next one</p>
+        <p class="joyitas-counter"><span id="joyita-current">1</span> / <span id="joyita-total">0</span></p>
+    </section>
+
     <footer>
         <div class="footer-hearts">💚</div>
         <p class="footer-text">Made with infinite love for <span>Ximena</span></p>
@@ -1212,6 +1342,14 @@
                 <h3 class="settings-section-title">✨ Floating Phrases</h3>
                 <div id="phrases-list"></div>
                 <button class="settings-add-btn" id="add-phrase">+ Add Phrase</button>
+            </div>
+
+            <!-- Joyitas -->
+            <div class="settings-section">
+                <h3 class="settings-section-title">💎 Joyitas</h3>
+                <p class="settings-label" style="margin-bottom: 1rem;">Things you've learned together</p>
+                <div id="joyitas-list"></div>
+                <button class="settings-add-btn" id="add-joyita">+ Add Joyita</button>
             </div>
 
             <!-- Music Section -->
@@ -1794,6 +1932,103 @@
             document.getElementById('vision-file-label').innerHTML = '📷 Click to upload an image';
         }
 
+        // ========== JOYITAS ==========
+        let joyitasData = [];
+        let currentJoyitaIndex = 0;
+
+        const defaultJoyitas = [
+            { text: "La paciencia es la base del amor verdadero", icon: "💚" },
+            { text: "Escuchar es más importante que hablar", icon: "👂" },
+            { text: "Los pequeños detalles son los que más importan", icon: "✨" },
+            { text: "El amor crece cuando lo cuidas cada día", icon: "🌱" },
+            { text: "La comunicación honesta lo es todo", icon: "💬" },
+            { text: "Reír juntos es la mejor medicina", icon: "😄" },
+            { text: "Apoyarse mutuamente en los sueños", icon: "🌟" },
+            { text: "El respeto es el fundamento", icon: "🙏" }
+        ];
+
+        function initializeJoyitas() {
+            const saved = localStorage.getItem('joyitas');
+            joyitasData = saved ? JSON.parse(saved) : defaultJoyitas;
+            renderJoyitas();
+
+            document.getElementById('joyitas-container').addEventListener('click', nextJoyita);
+        }
+
+        function renderJoyitas() {
+            const container = document.getElementById('joyitas-container');
+            container.innerHTML = '';
+
+            if (joyitasData.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted);">No joyitas yet. Add some in settings!</p>';
+                return;
+            }
+
+            // Create cards in reverse order so first card is on top
+            joyitasData.slice().reverse().forEach((joyita, i) => {
+                const actualIndex = joyitasData.length - 1 - i;
+                const card = document.createElement('div');
+                card.className = `joyita-card color-${actualIndex % 5}`;
+                card.dataset.index = actualIndex;
+
+                // Stack effect - slightly offset each card
+                const offset = i * 3;
+                card.style.transform = `translateY(${offset}px) rotate(${(i % 2 === 0 ? -1 : 1) * (i * 0.5)}deg)`;
+                card.style.zIndex = joyitasData.length - i;
+
+                card.innerHTML = `
+                    <span class="joyita-number">#${actualIndex + 1}</span>
+                    <span class="joyita-icon">${joyita.icon || '💚'}</span>
+                    <p class="joyita-text">${joyita.text}</p>
+                `;
+
+                container.appendChild(card);
+            });
+
+            updateJoyitaCounter();
+        }
+
+        function nextJoyita() {
+            const container = document.getElementById('joyitas-container');
+            const cards = container.querySelectorAll('.joyita-card');
+
+            if (cards.length === 0) return;
+
+            // Get the top card (last in DOM, highest z-index)
+            const topCard = cards[cards.length - 1];
+
+            // Animate it flying away
+            topCard.classList.add('flying');
+
+            // After animation, move it to the back of the stack
+            setTimeout(() => {
+                topCard.classList.remove('flying');
+                container.insertBefore(topCard, container.firstChild);
+
+                // Re-stack all cards
+                const allCards = container.querySelectorAll('.joyita-card');
+                allCards.forEach((card, i) => {
+                    const offset = i * 3;
+                    card.style.transform = `translateY(${offset}px) rotate(${(i % 2 === 0 ? -1 : 1) * (i * 0.5)}deg)`;
+                    card.style.zIndex = i + 1;
+                });
+
+                // Update counter
+                currentJoyitaIndex = (currentJoyitaIndex + 1) % joyitasData.length;
+                updateJoyitaCounter();
+            }, 500);
+        }
+
+        function updateJoyitaCounter() {
+            document.getElementById('joyita-current').textContent = currentJoyitaIndex + 1;
+            document.getElementById('joyita-total').textContent = joyitasData.length;
+        }
+
+        // Initialize joyitas on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeJoyitas();
+        });
+
         // ========== PARALLAX ==========
         document.addEventListener('mousemove', (e) => {
             const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
@@ -1891,6 +2126,7 @@
             document.getElementById('set-color-gold').value = siteSettings.colorGold;
 
             renderPhrasesList();
+            renderJoyitasList();
         }
 
         // Render the phrases list
@@ -1918,6 +2154,52 @@
                 btn.addEventListener('click', (e) => {
                     siteSettings.phrases.splice(e.target.dataset.index, 1);
                     renderPhrasesList();
+                });
+            });
+        }
+
+        // Render the joyitas list in settings
+        function renderJoyitasList() {
+            const container = document.getElementById('joyitas-list');
+            container.innerHTML = '';
+
+            const savedJoyitas = JSON.parse(localStorage.getItem('joyitas') || 'null') || defaultJoyitas;
+
+            savedJoyitas.forEach((joyita, index) => {
+                const item = document.createElement('div');
+                item.className = 'phrase-item';
+                item.style.marginBottom = '0.75rem';
+                item.innerHTML = `
+                    <input type="text" class="settings-input joyita-input" value="${joyita.text}" data-index="${index}" style="flex: 1;">
+                    <input type="text" class="settings-input joyita-icon-input" value="${joyita.icon || '💚'}" data-index="${index}" style="width: 50px; text-align: center;">
+                    <button class="phrase-delete joyita-delete" data-index="${index}">×</button>
+                `;
+                container.appendChild(item);
+            });
+
+            // Add event listeners
+            container.querySelectorAll('.joyita-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const joyitas = JSON.parse(localStorage.getItem('joyitas') || 'null') || defaultJoyitas;
+                    joyitas[e.target.dataset.index].text = e.target.value;
+                    localStorage.setItem('joyitas', JSON.stringify(joyitas));
+                });
+            });
+
+            container.querySelectorAll('.joyita-icon-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const joyitas = JSON.parse(localStorage.getItem('joyitas') || 'null') || defaultJoyitas;
+                    joyitas[e.target.dataset.index].icon = e.target.value;
+                    localStorage.setItem('joyitas', JSON.stringify(joyitas));
+                });
+            });
+
+            container.querySelectorAll('.joyita-delete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const joyitas = JSON.parse(localStorage.getItem('joyitas') || 'null') || defaultJoyitas;
+                    joyitas.splice(e.target.dataset.index, 1);
+                    localStorage.setItem('joyitas', JSON.stringify(joyitas));
+                    renderJoyitasList();
                 });
             });
         }
@@ -1953,6 +2235,11 @@
             floatingContainer.innerHTML = '';
             createFloatingWords();
 
+            // Refresh joyitas
+            joyitasData = JSON.parse(localStorage.getItem('joyitas') || 'null') || defaultJoyitas;
+            currentJoyitaIndex = 0;
+            renderJoyitas();
+
             // Show toast
             const toast = document.getElementById('settings-toast');
             toast.classList.add('show');
@@ -1963,6 +2250,7 @@
         function resetSettings() {
             if (confirm('Reset all settings to defaults?')) {
                 localStorage.removeItem('siteSettings');
+                localStorage.removeItem('joyitas');
                 siteSettings = { ...defaultSettings };
                 applySettings();
                 populateSettingsPanel();
@@ -1971,6 +2259,11 @@
                 const floatingContainer = document.getElementById('floating-words');
                 floatingContainer.innerHTML = '';
                 createFloatingWords();
+
+                // Reset joyitas
+                joyitasData = [...defaultJoyitas];
+                currentJoyitaIndex = 0;
+                renderJoyitas();
 
                 const toast = document.getElementById('settings-toast');
                 toast.textContent = 'Settings reset!';
@@ -1991,6 +2284,13 @@
         document.getElementById('add-phrase').addEventListener('click', () => {
             siteSettings.phrases.push('New phrase');
             renderPhrasesList();
+        });
+
+        document.getElementById('add-joyita').addEventListener('click', () => {
+            const joyitas = JSON.parse(localStorage.getItem('joyitas') || 'null') || defaultJoyitas;
+            joyitas.push({ text: 'New joyita', icon: '💚' });
+            localStorage.setItem('joyitas', JSON.stringify(joyitas));
+            renderJoyitasList();
         });
 
         // Initialize settings on load
