@@ -317,63 +317,6 @@
         /* YouTube Player */
         .youtube-player-wrapper { position: relative; }
 
-        .vinyl-stage {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .vinyl-container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-        }
-
-        .vinyl {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, #1a1a1a 0deg, #2a2a2a 30deg, #1a1a1a 60deg, #2a2a2a 90deg, #1a1a1a 120deg, #2a2a2a 150deg, #1a1a1a 180deg, #2a2a2a 210deg, #1a1a1a 240deg, #2a2a2a 270deg, #1a1a1a 300deg, #2a2a2a 330deg, #1a1a1a 360deg);
-            position: relative;
-            box-shadow: 0 0 60px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .vinyl.playing { animation: spin 3s linear infinite; }
-        .vinyl::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 130px; height: 130px; border-radius: 50%; background: linear-gradient(135deg, var(--sage), var(--forest)); box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4); }
-
-        .vinyl-label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .vinyl-label-icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
-        .vinyl-label-text { font-family: 'Caveat', cursive; font-size: 0.9rem; color: var(--gold-light); line-height: 1.2; }
-
-        .vinyl-grooves { position: absolute; top: 15%; left: 15%; right: 15%; bottom: 15%; border-radius: 50%; background: repeating-radial-gradient(circle at center, transparent 0px, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px); }
-        .vinyl-shine { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%); pointer-events: none; }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* Tonearm */
-        .tonearm { position: absolute; top: -10px; right: -70px; width: 150px; height: 20px; transform-origin: right center; transform: rotate(-35deg); transition: transform 0.5s ease; z-index: 10; }
-        .tonearm.playing { transform: rotate(-15deg); }
-        .tonearm-base { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 35px; height: 35px; background: #333; border-radius: 50%; border: 3px solid var(--gold); }
-        .tonearm-arm { position: absolute; right: 17px; top: 50%; transform: translateY(-50%); width: 130px; height: 6px; background: linear-gradient(to left, #444, #666); border-radius: 3px; }
-        .tonearm-head { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 25px; height: 18px; background: var(--gold); border-radius: 3px; }
-
         /* Visualizer */
         .visualizer { display: flex; align-items: flex-end; justify-content: center; gap: 3px; height: 60px; margin-top: 2rem; padding: 0.75rem 1.5rem; background: rgba(0, 0, 0, 0.3); border-radius: 30px; }
         .viz-bar { width: 4px; background: linear-gradient(to top, var(--sage), var(--gold), var(--rose)); border-radius: 2px; transition: height 0.15s ease; height: 8px; }
@@ -1115,9 +1058,8 @@
         /* Responsive */
         @media (max-width: 900px) {
             .player-container { grid-template-columns: 1fr; gap: 2rem; }
-            .vinyl-container { width: 260px; height: 260px; margin: 0 auto; }
-            .vinyl-stage { align-items: center; }
-            .tonearm { display: none; }
+            .vinyl { width: 240px; height: 240px; }
+            .vinyl-label { width: 80px; height: 80px; }
             .add-song-form { width: 100%; flex-direction: column; }
             .youtube-input { width: 100%; }
             .add-song-btn { width: 100%; justify-content: center; }
@@ -1149,7 +1091,8 @@
             .section-title { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1rem; }
             .music-quote { font-size: 1rem; }
 
-            .vinyl-container { width: 220px; height: 220px; }
+            .vinyl { width: 200px; height: 200px; }
+            .vinyl-label { width: 70px; height: 70px; }
             .visualizer { height: 50px; gap: 2px; padding: 0.5rem 1rem; }
             .viz-bar { width: 3px; }
 
@@ -1218,7 +1161,8 @@
             .hero-names { font-size: clamp(2rem, 15vw, 4rem); }
             .counter-item { min-width: 65px; }
             .counter-number { font-size: 1.75rem; }
-            .vinyl-container { width: 180px; height: 180px; }
+            .vinyl { width: 160px; height: 160px; }
+            .vinyl-label { width: 55px; height: 55px; }
         }
     </style>
 </head>
