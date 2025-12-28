@@ -574,6 +574,218 @@
         .modal-btn.confirm { background: linear-gradient(135deg, var(--sage), var(--mint)); border: none; color: white; }
         .modal-btn:hover { transform: translateY(-2px); }
 
+        /* ========== SETTINGS PANEL ========== */
+        .settings-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--sage), var(--mint));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .settings-toggle:hover { transform: scale(1.1); }
+        .settings-toggle.visible { display: flex; }
+
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            max-width: 100vw;
+            height: 100vh;
+            background: linear-gradient(180deg, #0d1f0d, #1a3a1a);
+            z-index: 2000;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+        }
+        .settings-panel.open { right: 0; }
+
+        .settings-header {
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .settings-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+        .settings-close {
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .settings-content { padding: 1.5rem; }
+
+        .settings-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .settings-section:last-child { border-bottom: none; }
+
+        .settings-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--mint);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .settings-field { margin-bottom: 1rem; }
+        .settings-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .settings-input, .settings-textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            color: var(--cream);
+            font-size: 0.95rem;
+            outline: none;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        .settings-input:focus, .settings-textarea:focus { border-color: var(--gold); }
+        .settings-textarea { min-height: 80px; resize: vertical; }
+
+        .settings-color-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .settings-color-input {
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+        }
+        .settings-color-input::-webkit-color-swatch-wrapper { padding: 0; }
+        .settings-color-input::-webkit-color-swatch { border-radius: 8px; border: 2px solid rgba(255,255,255,0.2); }
+
+        .phrase-item {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+        .phrase-item input { flex: 1; }
+        .phrase-delete {
+            background: rgba(200,80,80,0.3);
+            border: 1px solid rgba(200,80,80,0.5);
+            color: #ff9999;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .phrase-delete:hover { background: rgba(200,80,80,0.5); }
+
+        .settings-add-btn {
+            background: rgba(74, 124, 89, 0.3);
+            border: 1px dashed rgba(74, 124, 89, 0.6);
+            color: var(--mint);
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        .settings-add-btn:hover { background: rgba(74, 124, 89, 0.5); border-style: solid; }
+
+        .settings-save-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--sage), var(--mint));
+            border: none;
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .settings-save-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(127,178,133,0.3); }
+
+        .settings-reset-btn {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-muted);
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .settings-reset-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+        .settings-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .settings-overlay.open { opacity: 1; visibility: visible; }
+
+        .settings-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--sage);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .settings-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
@@ -961,6 +1173,97 @@
         </div>
     </div>
 
+    <!-- Settings Toggle Button -->
+    <button class="settings-toggle" id="settings-toggle">⚙</button>
+
+    <!-- Settings Overlay -->
+    <div class="settings-overlay" id="settings-overlay"></div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settings-panel">
+        <div class="settings-header">
+            <h2 class="settings-title">⚙ Settings</h2>
+            <button class="settings-close" id="settings-close">×</button>
+        </div>
+        <div class="settings-content">
+            <!-- Hero Section -->
+            <div class="settings-section">
+                <h3 class="settings-section-title">💚 Hero Section</h3>
+                <div class="settings-field">
+                    <label class="settings-label">Tagline (above names)</label>
+                    <input type="text" class="settings-input" id="set-tagline" value="A love story written in the stars">
+                </div>
+                <div class="settings-field">
+                    <label class="settings-label">Name 1</label>
+                    <input type="text" class="settings-input" id="set-name1" value="Iván">
+                </div>
+                <div class="settings-field">
+                    <label class="settings-label">Name 2</label>
+                    <input type="text" class="settings-input" id="set-name2" value="Ximena">
+                </div>
+                <div class="settings-field">
+                    <label class="settings-label">Start Date</label>
+                    <input type="date" class="settings-input" id="set-date" value="2025-10-11">
+                </div>
+            </div>
+
+            <!-- Floating Phrases -->
+            <div class="settings-section">
+                <h3 class="settings-section-title">✨ Floating Phrases</h3>
+                <div id="phrases-list"></div>
+                <button class="settings-add-btn" id="add-phrase">+ Add Phrase</button>
+            </div>
+
+            <!-- Music Section -->
+            <div class="settings-section">
+                <h3 class="settings-section-title">🎵 Music Section</h3>
+                <div class="settings-field">
+                    <label class="settings-label">Section Quote</label>
+                    <textarea class="settings-textarea" id="set-music-quote">I love when she sends me songs... each one is a piece of her heart</textarea>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="settings-section">
+                <h3 class="settings-section-title">💌 Footer</h3>
+                <div class="settings-field">
+                    <label class="settings-label">Footer Text (name after "for")</label>
+                    <input type="text" class="settings-input" id="set-footer-name" value="Ximena">
+                </div>
+                <div class="settings-field">
+                    <label class="settings-label">Special Number</label>
+                    <input type="text" class="settings-input" id="set-special-number" value="24">
+                </div>
+            </div>
+
+            <!-- Colors -->
+            <div class="settings-section">
+                <h3 class="settings-section-title">🎨 Colors</h3>
+                <div class="settings-field">
+                    <label class="settings-label">Primary Green (Sage)</label>
+                    <div class="settings-color-row">
+                        <input type="color" class="settings-color-input" id="set-color-sage" value="#4a7c59">
+                        <span class="settings-label" style="margin:0">Used for buttons, accents</span>
+                    </div>
+                </div>
+                <div class="settings-field">
+                    <label class="settings-label">Gold Accent</label>
+                    <div class="settings-color-row">
+                        <input type="color" class="settings-color-input" id="set-color-gold" value="#d4a574">
+                        <span class="settings-label" style="margin:0">Used for highlights, text</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Buttons -->
+            <button class="settings-save-btn" id="save-settings">💾 Save Changes</button>
+            <button class="settings-reset-btn" id="reset-settings">Reset to Defaults</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="settings-toast" id="settings-toast">Settings saved!</div>
+
     <!-- YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 
@@ -990,12 +1293,10 @@
         // ========== FLOATING WORDS ==========
         function createFloatingWords() {
             const container = document.getElementById('floating-words');
-            const phrases = [
-                'Sipis',
-                ':)',
-                'Que se les multiplique 7 veces 7',
-                'Sisisi perfecto'
-            ];
+            // Use phrases from settings if available
+            const phrases = (typeof siteSettings !== 'undefined' && siteSettings.phrases)
+                ? siteSettings.phrases
+                : ['Sipis', ':)', 'Que se les multiplique 7 veces 7', 'Sisisi perfecto'];
 
             // Function to animate a single word
             function animateWord(word) {
@@ -1035,7 +1336,10 @@
         // ========== COUNTER ==========
         function initializeCounter() {
             function updateCounter() {
-                const startDate = new Date('2025-10-11T00:00:00');
+                const dateStr = (typeof siteSettings !== 'undefined' && siteSettings.startDate)
+                    ? siteSettings.startDate
+                    : '2025-10-11';
+                const startDate = new Date(dateStr + 'T00:00:00');
                 const now = new Date();
                 const diff = now - startDate;
                 document.getElementById('days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -1514,6 +1818,184 @@
                 document.getElementById('mobile-nav').classList.remove('active');
             });
         });
+
+        // ========== SETTINGS PANEL ==========
+        const defaultSettings = {
+            tagline: 'A love story written in the stars',
+            name1: 'Iván',
+            name2: 'Ximena',
+            startDate: '2025-10-11',
+            phrases: ['Sipis', ':)', 'Que se les multiplique 7 veces 7', 'Sisisi perfecto'],
+            musicQuote: 'I love when she sends me songs... each one is a piece of her heart',
+            footerName: 'Ximena',
+            specialNumber: '24',
+            colorSage: '#4a7c59',
+            colorGold: '#d4a574'
+        };
+
+        let siteSettings = { ...defaultSettings };
+
+        // Check if edit mode is enabled via URL
+        function checkEditMode() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('edit')) {
+                document.getElementById('settings-toggle').classList.add('visible');
+            }
+        }
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('siteSettings');
+            if (saved) {
+                siteSettings = { ...defaultSettings, ...JSON.parse(saved) };
+            }
+            applySettings();
+            populateSettingsPanel();
+        }
+
+        // Apply settings to the page
+        function applySettings() {
+            // Hero
+            document.querySelector('.hero-prelude').textContent = siteSettings.tagline;
+            document.querySelector('.hero-names').innerHTML = `${siteSettings.name1}<span class="ampersand">&</span>${siteSettings.name2}`;
+
+            const dateObj = new Date(siteSettings.startDate + 'T00:00:00');
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.querySelector('.hero-date').innerHTML = `Since <span>${dateObj.toLocaleDateString('en-US', options)}</span>`;
+
+            // Music quote
+            document.querySelector('.music-quote').textContent = `"${siteSettings.musicQuote}"`;
+
+            // Footer
+            document.querySelector('.footer-text span').textContent = siteSettings.footerName;
+            document.querySelector('.number-24').textContent = `✦ ${siteSettings.specialNumber} ✦`;
+
+            // Colors
+            document.documentElement.style.setProperty('--sage', siteSettings.colorSage);
+            document.documentElement.style.setProperty('--gold', siteSettings.colorGold);
+
+            // Update counter with new date
+            window.counterStartDate = siteSettings.startDate;
+        }
+
+        // Populate the settings panel with current values
+        function populateSettingsPanel() {
+            document.getElementById('set-tagline').value = siteSettings.tagline;
+            document.getElementById('set-name1').value = siteSettings.name1;
+            document.getElementById('set-name2').value = siteSettings.name2;
+            document.getElementById('set-date').value = siteSettings.startDate;
+            document.getElementById('set-music-quote').value = siteSettings.musicQuote;
+            document.getElementById('set-footer-name').value = siteSettings.footerName;
+            document.getElementById('set-special-number').value = siteSettings.specialNumber;
+            document.getElementById('set-color-sage').value = siteSettings.colorSage;
+            document.getElementById('set-color-gold').value = siteSettings.colorGold;
+
+            renderPhrasesList();
+        }
+
+        // Render the phrases list
+        function renderPhrasesList() {
+            const container = document.getElementById('phrases-list');
+            container.innerHTML = '';
+            siteSettings.phrases.forEach((phrase, index) => {
+                const item = document.createElement('div');
+                item.className = 'phrase-item';
+                item.innerHTML = `
+                    <input type="text" class="settings-input phrase-input" value="${phrase}" data-index="${index}">
+                    <button class="phrase-delete" data-index="${index}">×</button>
+                `;
+                container.appendChild(item);
+            });
+
+            // Add event listeners
+            container.querySelectorAll('.phrase-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    siteSettings.phrases[e.target.dataset.index] = e.target.value;
+                });
+            });
+
+            container.querySelectorAll('.phrase-delete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    siteSettings.phrases.splice(e.target.dataset.index, 1);
+                    renderPhrasesList();
+                });
+            });
+        }
+
+        // Open/close settings panel
+        function openSettings() {
+            document.getElementById('settings-panel').classList.add('open');
+            document.getElementById('settings-overlay').classList.add('open');
+        }
+
+        function closeSettings() {
+            document.getElementById('settings-panel').classList.remove('open');
+            document.getElementById('settings-overlay').classList.remove('open');
+        }
+
+        // Save settings
+        function saveSettings() {
+            siteSettings.tagline = document.getElementById('set-tagline').value;
+            siteSettings.name1 = document.getElementById('set-name1').value;
+            siteSettings.name2 = document.getElementById('set-name2').value;
+            siteSettings.startDate = document.getElementById('set-date').value;
+            siteSettings.musicQuote = document.getElementById('set-music-quote').value;
+            siteSettings.footerName = document.getElementById('set-footer-name').value;
+            siteSettings.specialNumber = document.getElementById('set-special-number').value;
+            siteSettings.colorSage = document.getElementById('set-color-sage').value;
+            siteSettings.colorGold = document.getElementById('set-color-gold').value;
+
+            localStorage.setItem('siteSettings', JSON.stringify(siteSettings));
+            applySettings();
+
+            // Recreate floating words with new phrases
+            const floatingContainer = document.getElementById('floating-words');
+            floatingContainer.innerHTML = '';
+            createFloatingWords();
+
+            // Show toast
+            const toast = document.getElementById('settings-toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Reset settings
+        function resetSettings() {
+            if (confirm('Reset all settings to defaults?')) {
+                localStorage.removeItem('siteSettings');
+                siteSettings = { ...defaultSettings };
+                applySettings();
+                populateSettingsPanel();
+
+                // Recreate floating words
+                const floatingContainer = document.getElementById('floating-words');
+                floatingContainer.innerHTML = '';
+                createFloatingWords();
+
+                const toast = document.getElementById('settings-toast');
+                toast.textContent = 'Settings reset!';
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.textContent = 'Settings saved!';
+                }, 2500);
+            }
+        }
+
+        // Event listeners for settings
+        document.getElementById('settings-toggle').addEventListener('click', openSettings);
+        document.getElementById('settings-close').addEventListener('click', closeSettings);
+        document.getElementById('settings-overlay').addEventListener('click', closeSettings);
+        document.getElementById('save-settings').addEventListener('click', saveSettings);
+        document.getElementById('reset-settings').addEventListener('click', resetSettings);
+        document.getElementById('add-phrase').addEventListener('click', () => {
+            siteSettings.phrases.push('New phrase');
+            renderPhrasesList();
+        });
+
+        // Initialize settings on load
+        checkEditMode();
+        loadSettings();
 
     </script>
 </body>
