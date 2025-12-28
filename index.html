@@ -183,9 +183,6 @@
         .music-header { text-align: center; margin-bottom: 4rem; }
         .music-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--mint); max-width: 700px; margin: 0 auto; }
 
-        .music-notes-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
-        .music-note { position: absolute; font-size: 2rem; color: var(--gold); opacity: 0; animation: floatNote 8s ease-in-out infinite; }
-        @keyframes floatNote { 0% { opacity: 0; transform: translateY(100vh) rotate(0deg); } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { opacity: 0; transform: translateY(-100px) rotate(360deg); } }
 
         .player-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; }
 
@@ -828,7 +825,6 @@
 
     <!-- Music -->
     <section class="music-section" id="music">
-        <div class="music-notes-container" id="music-notes"></div>
         <div class="music-header">
             <p class="section-label">Our Soundtrack</p>
             <h2 class="section-title">Songs of Our Love</h2>
@@ -1002,7 +998,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
             createFloatingWords();
-            createMusicNotes();
             createVisualizer();
             initializeCounter();
             initializeVisionBoard();
@@ -1066,21 +1061,6 @@
                 word.style.animationDelay = (3 + i * 2) + 's';
                 word.style.animationDuration = (20 + Math.random() * 10) + 's';
                 container.appendChild(word);
-            }
-        }
-
-        // ========== MUSIC NOTES ==========
-        function createMusicNotes() {
-            const container = document.getElementById('music-notes');
-            const notes = ['♪', '♫', '♬', '♩', '🎵', '🎶'];
-            for (let i = 0; i < 15; i++) {
-                const note = document.createElement('div');
-                note.className = 'music-note';
-                note.textContent = notes[Math.floor(Math.random() * notes.length)];
-                note.style.left = Math.random() * 100 + '%';
-                note.style.animationDelay = Math.random() * 8 + 's';
-                note.style.fontSize = (1.5 + Math.random() * 1.5) + 'rem';
-                container.appendChild(note);
             }
         }
 
